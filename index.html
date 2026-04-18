@@ -117,6 +117,25 @@
     footer { background: var(--accent-dk); color: rgba(255,255,255,0.7); text-align: center; padding: 32px; font-size: 0.82rem; }
     footer a { color: var(--accent-lt); text-decoration: none; }
 
+    /* CHART */
+    .chart-section { margin-top: 48px; }
+    .chart-section h3 { font-size: 0.95rem; font-weight: 700; color: var(--accent-dk); margin-bottom: 20px; }
+    .chart-wrap { background: var(--card); border-radius: 14px; padding: 24px 28px; border: 1px solid var(--border); }
+    .chart-bars { display: flex; align-items: flex-end; gap: 10px; height: 120px; margin-bottom: 8px; }
+    .chart-col { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
+    .bar-stack { width: 100%; display: flex; flex-direction: column; justify-content: flex-end; border-radius: 4px 4px 0 0; overflow: hidden; }
+    .bar-intl { background: #7C5C3E; }
+    .bar-kci  { background: #C49A72; }
+    .chart-labels { display: flex; gap: 10px; }
+    .chart-yr { flex: 1; text-align: center; font-size: 0.68rem; color: var(--muted); }
+    .chart-legend { display: flex; gap: 16px; margin-top: 14px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--muted); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+    .chart-totals { display: flex; gap: 24px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .total-item { text-align: center; }
+    .total-num { font-size: 1.6rem; font-weight: 800; color: var(--accent-dk); line-height: 1; }
+    .total-label { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+
     /* RESPONSIVE */
     @media (max-width: 680px) {
       .about-grid { grid-template-columns: 1fr; }
@@ -151,8 +170,8 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="profile-wrap">
-        <img src="assets/profile.jpg" alt="Kukhyeon Kim"
-             onerror="this.outerHTML='<span style=\'padding:12px;font-size:0.78rem;color:var(--muted)\'>📷 profile.jpg</span>'" />
+        <img src="assets/profile.jpeg" alt="Kukhyeon Kim"
+             onerror="this.outerHTML='<span style=\'padding:12px;font-size:0.78rem;color:var(--muted)\'>📷 profile.jpeg</span>'" />
       </div>
       <div class="about-text">
         <h1>Kukhyeon Kim <span style="font-size:1.1rem;font-weight:400;color:var(--muted)">김국현</span></h1>
@@ -170,6 +189,23 @@
           <!-- CV 임시 비활성화 - PDF 업데이트 후 복원 예정 -->
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHART SECTION -->
+<div class="section-wrap alt" id="stats">
+  <div class="section-inner">
+    <div class="section-label" data-en="Research Output" data-ko="연구 실적">Research Output</div>
+    <h2 data-en="Publications by Year" data-ko="연도별 논문 게재 현황">Publications by Year</h2>
+    <div class="chart-wrap">
+      <div class="chart-bars" id="chartBars"></div>
+      <div class="chart-labels" id="chartLabels"></div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#7C5C3E"></div><span data-en="International" data-ko="국제저널">International</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C49A72"></div><span data-en="KCI / Book" data-ko="KCI / 북챕터">KCI / Book</span></div>
+      </div>
+      <div class="chart-totals" id="chartTotals"></div>
     </div>
   </div>
 </div>
@@ -318,7 +354,7 @@
   }
 
   // ── Publications ─────────────────────────────────────────
-  fetch('./data/publications.json').then(r => r.json()).then(d => { allPubs = d; renderPubs('all'); });
+  fetch('./data/publications.json').then(r => r.json()).then(d => { allPubs = d; renderPubs('all'); renderChart(d); });
 
   function filterPubs(type, btn) {
     currentPubFilter = type;
@@ -402,6 +438,58 @@
         </div>
         <span class="${a.type==='international'?'a-intl':'a-dom'}">${a.type==='international'?'International':'Domestic'}</span>
       </div>`).join('');
+  }
+
+  // ── Chart ─────────────────────────────────────────────────
+  function renderChart(pubs) {
+    const byYear = {};
+    pubs.forEach(p => {
+      if (!byYear[p.year]) byYear[p.year] = { intl: 0, kci: 0 };
+      if (p.type === 'international') byYear[p.year].intl++;
+      else byYear[p.year].kci++;
+    });
+    const years = Object.keys(byYear).sort();
+    const maxVal = Math.max(...years.map(y => byYear[y].intl + byYear[y].kci));
+
+    const barsEl = document.getElementById('chartBars');
+    const labelsEl = document.getElementById('chartLabels');
+    const totalsEl = document.getElementById('chartTotals');
+
+    barsEl.innerHTML = years.map(yr => {
+      const d = byYear[yr];
+      const total = d.intl + d.kci;
+      const intlH = Math.round((d.intl / maxVal) * 100);
+      const kciH  = Math.round((d.kci  / maxVal) * 100);
+      return `<div class="chart-col">
+        <div style="font-size:0.68rem;color:var(--accent-dk);font-weight:700;margin-bottom:3px">${total}</div>
+        <div class="bar-stack" style="height:${intlH+kciH}px">
+          <div class="bar-intl" style="height:${intlH}px"></div>
+          <div class="bar-kci"  style="height:${kciH}px"></div>
+        </div>
+      </div>`;
+    }).join('');
+
+    labelsEl.innerHTML = years.map(yr =>
+      `<div class="chart-yr">'${String(yr).slice(2)}</div>`
+    ).join('');
+
+    const totalIntl = pubs.filter(p => p.type === 'international').length;
+    const totalKci  = pubs.filter(p => p.type === 'kci').length;
+    const totalBook = pubs.filter(p => p.type === 'book').length;
+    const totalAll  = pubs.length;
+
+    const labels = {
+      all:   currentLang === 'ko' ? '총 논문' : 'Total',
+      intl:  currentLang === 'ko' ? '국제저널' : 'International',
+      kci:   currentLang === 'ko' ? 'KCI' : 'KCI',
+      book:  currentLang === 'ko' ? '북챕터' : 'Book Chapter',
+    };
+
+    totalsEl.innerHTML = `
+      <div class="total-item"><div class="total-num">${totalAll}</div><div class="total-label">${labels.all}</div></div>
+      <div class="total-item"><div class="total-num" style="color:#7C5C3E">${totalIntl}</div><div class="total-label">${labels.intl}</div></div>
+      <div class="total-item"><div class="total-num" style="color:#C49A72">${totalKci}</div><div class="total-label">${labels.kci}</div></div>
+      <div class="total-item"><div class="total-num" style="color:#975A16">${totalBook}</div><div class="total-label">${labels.book}</div></div>`;
   }
 
   // ── Init ──────────────────────────────────────────────────
