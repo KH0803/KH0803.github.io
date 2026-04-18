@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kukhyeon Kim | Educational Technologist</title>
+  <style>
+    :root {
+      --bg:       #F8F4EF;
+      --bg-alt:   #F1EAE0;
+      --card:     #FFFFFF;
+      --accent:   #7C5C3E;
+      --accent-lt:#C49A72;
+      --accent-dk:#5A4030;
+      --text:     #2C1F14;
+      --muted:    #7A6858;
+      --border:   #E5D9CC;
+      --tag:      #EDE3D8;
+      --nav-h:    64px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; height: var(--nav-h); background: rgba(248,244,239,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
+    .nav-name { font-size: 1rem; font-weight: 700; color: var(--accent-dk); letter-spacing: -0.3px; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--accent); }
+    .lang-toggle { display: flex; background: var(--bg-alt); border-radius: 20px; padding: 3px; border: 1px solid var(--border); }
+    .lang-btn { padding: 4px 12px; border-radius: 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--muted); transition: all 0.15s; }
+    .lang-btn.active { background: var(--accent); color: white; }
+
+    /* LAYOUT */
+    .section-wrap { padding: 80px 5%; }
+    .section-inner { max-width: 1060px; margin: 0 auto; }
+    .section-wrap.alt { background: var(--bg-alt); }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-lt); margin-bottom: 8px; }
+    h2 { font-size: 1.75rem; font-weight: 700; color: var(--accent-dk); margin-bottom: 36px; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
+    .profile-wrap { width: 200px; height: 200px; border-radius: 16px; border: 2px solid var(--border); overflow: hidden; background: var(--bg-alt); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.8rem; text-align: center; }
+    .profile-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .about-text h1 { font-size: 2.2rem; font-weight: 800; color: var(--accent-dk); letter-spacing: -0.5px; margin-bottom: 4px; }
+    .about-sub { font-size: 1rem; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+    .about-inst { font-size: 0.87rem; color: var(--muted); margin-bottom: 20px; }
+    .about-bio { font-size: 0.92rem; line-height: 1.78; margin-bottom: 24px; }
+    .contact-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .contact-links a { font-size: 0.8rem; padding: 6px 14px; border: 1.5px solid var(--accent-lt); border-radius: 20px; color: var(--accent); text-decoration: none; font-weight: 500; transition: all 0.15s; }
+    .contact-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+    /* RESEARCH */
+    .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 28px; }
+    .rc { background: var(--card); border-radius: 14px; padding: 24px; border: 1px solid var(--border); transition: box-shadow 0.2s, transform 0.2s; }
+    .rc:hover { box-shadow: 0 6px 24px rgba(124,92,62,0.1); transform: translateY(-2px); }
+    .rc.hl { border-color: var(--accent-lt); border-width: 1.5px; }
+    .rc-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .rc-title { font-size: 1rem; font-weight: 700; color: var(--accent-dk); margin-bottom: 8px; }
+    .rc-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+    .rc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .rc-tag { font-size: 0.72rem; padding: 3px 9px; background: var(--tag); color: var(--accent); border-radius: 10px; font-weight: 500; }
+    .tools-box { background: var(--card); border-radius: 14px; padding: 24px 28px; border: 1.5px solid var(--accent-lt); }
+    .tools-box h3 { font-size: 0.95rem; font-weight: 700; color: var(--accent-dk); margin-bottom: 18px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .tool-item { text-align: center; }
+    .tool-icon { font-size: 1.8rem; margin-bottom: 6px; }
+    .tool-name { font-size: 0.78rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .tool-cert { font-size: 0.7rem; color: var(--accent); font-weight: 500; }
+
+    /* FILTER */
+    .filter-row { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .filter-btn { padding: 7px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; border: 1.5px solid var(--border); background: var(--card); color: var(--muted); cursor: pointer; transition: all 0.15s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; gap: 12px; }
+    .pub-item { background: var(--card); border-radius: 12px; padding: 18px 22px; border: 1px solid var(--border); display: flex; gap: 18px; }
+    .pub-year { font-size: 0.8rem; font-weight: 700; color: var(--accent-lt); min-width: 36px; padding-top: 2px; }
+    .pub-body { flex: 1; }
+    .pub-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.5; }
+    .pub-authors { font-size: 0.78rem; color: var(--muted); margin-bottom: 3px; }
+    .pub-journal { font-size: 0.78rem; color: var(--accent); }
+    .pub-badge { font-size: 0.68rem; padding: 2px 8px; border-radius: 8px; font-weight: 600; margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+    .b-intl { background: #EBF4FF; color: #2B6CB0; }
+    .b-kci  { background: #F0FFF4; color: #276749; }
+    .b-book { background: #FFFAF0; color: #975A16; }
+    .pub-link { font-size: 0.72rem; color: var(--accent); text-decoration: none; margin-top: 5px; display: inline-block; font-weight: 500; }
+    .pub-link:hover { text-decoration: underline; }
+
+    /* PRESENTATIONS */
+    .year-group { margin-bottom: 10px; }
+    .year-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-weight: 700; color: var(--accent-dk); font-size: 0.95rem; transition: background 0.15s; user-select: none; }
+    .year-header:hover { background: var(--bg-alt); }
+    .year-body { display: none; padding: 8px 0 0 0; }
+    .year-body.open { display: block; }
+    .pres-item { background: var(--card); border-radius: 10px; padding: 14px 18px; border: 1px solid var(--border); margin-bottom: 8px; display: flex; gap: 14px; align-items: flex-start; }
+    .pres-type { font-size: 0.7rem; padding: 3px 9px; border-radius: 8px; background: var(--tag); color: var(--accent); font-weight: 600; white-space: nowrap; margin-top: 2px; }
+    .pres-body { flex: 1; }
+    .pres-title { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 3px; line-height: 1.4; }
+    .pres-meta { font-size: 0.77rem; color: var(--muted); }
+    .pres-conf { color: var(--accent); font-weight: 600; }
+
+    /* AWARDS */
+    .awards-list { display: flex; flex-direction: column; gap: 10px; }
+    .award-item { background: var(--card); border-radius: 12px; padding: 16px 22px; border: 1px solid var(--border); display: flex; gap: 18px; align-items: center; }
+    .award-year { font-size: 0.85rem; font-weight: 700; color: var(--accent-lt); min-width: 40px; }
+    .award-body { flex: 1; }
+    .award-title { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .award-org { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .a-intl { font-size: 0.68rem; padding: 2px 8px; border-radius: 8px; background: #EBF4FF; color: #2B6CB0; font-weight: 600; white-space: nowrap; }
+    .a-dom  { font-size: 0.68rem; padding: 2px 8px; border-radius: 8px; background: var(--tag); color: var(--accent); font-weight: 600; white-space: nowrap; }
+
+    /* FOOTER */
+    footer { background: var(--accent-dk); color: rgba(255,255,255,0.7); text-align: center; padding: 32px; font-size: 0.82rem; }
+    footer a { color: var(--accent-lt); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .research-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(2,1fr); }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Kukhyeon Kim</span>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about"         data-en="About"         data-ko="소개">About</a>
+      <a href="#research"      data-en="Research"      data-ko="연구">Research</a>
+      <a href="#publications"  data-en="Publications"  data-ko="논문">Publications</a>
+      <a href="#presentations" data-en="Presentations" data-ko="발표">Presentations</a>
+      <a href="#awards"        data-en="Awards"        data-ko="수상">Awards</a>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="btn-ko" onclick="setLang('ko')">한국어</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ABOUT -->
+<div class="section-wrap" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="profile-wrap">
+        <img src="assets/profile.jpg" alt="Kukhyeon Kim"
+             onerror="this.outerHTML='<span style=\'padding:12px;font-size:0.78rem;color:var(--muted)\'>📷 profile.jpg</span>'" />
+      </div>
+      <div class="about-text">
+        <h1>Kukhyeon Kim <span style="font-size:1.1rem;font-weight:400;color:var(--muted)">김국현</span></h1>
+        <div class="about-sub" data-en="Ph.D. in Educational Technology" data-ko="교육학박사 (교육공학)">Ph.D. in Educational Technology</div>
+        <div class="about-inst" data-en="Postdoctoral Researcher · BK21 Flourishing Education · Chonnam National University" data-ko="박사후연구원 · BK21 미래교육을 위한 플로리싱전문가 양성 사업단 · 전남대학교">Postdoctoral Researcher · BK21 Flourishing Education · Chonnam National University</div>
+        <p class="about-bio"
+           data-en="I am an educational technologist specializing in the design and development of immersive XR/VR/AR simulations for learning. My research focuses on multimodal physiological measurement—integrating eye tracking, EEG, and facial expression analysis—to understand how learners think, feel, and engage within simulated environments. I also explore digital human interactions, learning experience design (LXD), and AI-integrated teacher education."
+           data-ko="저는 교육공학 연구자로서 학습을 위한 몰입형 XR/VR/AR 시뮬레이션의 설계 및 개발을 전문으로 합니다. 시선추적, 뇌파(EEG), 얼굴표정 분석 등 멀티모달 생리측정을 통합하여 학습자가 시뮬레이션 환경에서 어떻게 사고하고, 느끼며, 몰입하는지를 탐구합니다. 또한 디지털휴먼 상호작용, 학습경험설계(LXD), AI 융합 교사 교육도 연구하고 있습니다.">
+          I am an educational technologist specializing in the design and development of immersive XR/VR/AR simulations for learning. My research focuses on multimodal physiological measurement—integrating eye tracking, EEG, and facial expression analysis—to understand how learners think, feel, and engage within simulated environments. I also explore digital human interactions, learning experience design (LXD), and AI-integrated teacher education.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:Edu.kukhyeon@gmail.com">✉ Email</a>
+          <a href="https://scholar.google.com" target="_blank" data-en="Google Scholar" data-ko="구글 스칼라">Google Scholar</a>
+          <a href="https://github.com/KH0803" target="_blank">GitHub</a>
+          <a href="data/cv.pdf" target="_blank" data-en="Download CV" data-ko="CV 다운로드">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div class="section-wrap alt" id="research">
+  <div class="section-inner">
+    <div class="section-label" data-en="Research Interests" data-ko="연구주제">Research Interests</div>
+    <h2 data-en="What I Study" data-ko="연구 분야">What I Study</h2>
+
+    <div class="research-grid">
+      <div class="rc hl">
+        <div class="rc-icon">👁🧠</div>
+        <div class="rc-title" data-en="Multimodal Physiological Measurement" data-ko="멀티모달 생리측정">Multimodal Physiological Measurement</div>
+        <div class="rc-desc"
+             data-en="Capturing learners' cognitive and emotional states using simultaneous eye tracking, EEG (brainwave), and facial expression analysis during XR-based learning experiences."
+             data-ko="시선추적, 뇌파(EEG), 얼굴표정 분석을 동시에 활용하여 XR 학습 환경에서 학습자의 인지 및 정서 상태를 측정합니다.">
+          Capturing learners' cognitive and emotional states using simultaneous eye tracking, EEG (brainwave), and facial expression analysis during XR-based learning experiences.
+        </div>
+        <div class="rc-tags">
+          <span class="rc-tag">Eye Tracking</span><span class="rc-tag">EEG</span><span class="rc-tag">Facial Expression</span><span class="rc-tag">iMotions</span><span class="rc-tag">Cognitive Load</span>
+        </div>
+      </div>
+
+      <div class="rc">
+        <div class="rc-icon">🥽</div>
+        <div class="rc-title" data-en="XR / VR / AR Simulation Design" data-ko="XR/VR/AR 시뮬레이션 설계">XR / VR / AR Simulation Design</div>
+        <div class="rc-desc"
+             data-en="Designing and developing extended reality simulations for education—preservice teacher training, geography, nursing, and industrial safety—grounded in learning experience design (LXD)."
+             data-ko="학습경험설계(LXD) 원리에 기반하여 예비교사 훈련, 지리, 간호, 산업안전 등 다양한 교육 목적의 XR 시뮬레이션을 설계·개발합니다.">
+          Designing and developing extended reality simulations for education—preservice teacher training, geography, nursing, and industrial safety—grounded in learning experience design (LXD).
+        </div>
+        <div class="rc-tags">
+          <span class="rc-tag">XR Simulation</span><span class="rc-tag">LXD</span><span class="rc-tag">Scenario Design</span><span class="rc-tag">Immersive Learning</span>
+        </div>
+      </div>
+
+      <div class="rc">
+        <div class="rc-icon">🤖</div>
+        <div class="rc-title" data-en="Digital Human & Avatar" data-ko="디지털휴먼 & 아바타">Digital Human & Avatar</div>
+        <div class="rc-desc"
+             data-en="Investigating how virtual agents and avatars influence learners' social presence, attention, and emotional experience in virtual classrooms and simulations."
+             data-ko="가상 에이전트와 아바타가 가상 교실 및 시뮬레이션에서 학습자의 사회적 실재감, 주의집중, 정서 경험에 미치는 영향을 탐구합니다.">
+          Investigating how virtual agents and avatars influence learners' social presence, attention, and emotional experience in virtual classrooms and simulations.
+        </div>
+        <div class="rc-tags">
+          <span class="rc-tag">Digital Human</span><span class="rc-tag">Avatar Realism</span><span class="rc-tag">Social Presence</span><span class="rc-tag">Emotion</span>
+        </div>
+      </div>
+
+      <div class="rc">
+        <div class="rc-icon">🌱</div>
+        <div class="rc-title" data-en="AI Education & Flourishing" data-ko="AI 교육역량 & 플로리싱">AI Education & Flourishing</div>
+        <div class="rc-desc"
+             data-en="Developing AI·digital teaching competency frameworks across teacher career stages, and exploring positive emotion–based flourishing education and academic self-efficacy."
+             data-ko="교직생애주기별 AI·디지털 수업역량 지표를 개발하고, 긍정정서 기반의 플로리싱 교육 및 학업적 자기효능감을 연구합니다.">
+          Developing AI·digital teaching competency frameworks across teacher career stages, and exploring positive emotion–based flourishing education and academic self-efficacy.
+        </div>
+        <div class="rc-tags">
+          <span class="rc-tag">AI Competency</span><span class="rc-tag">Teacher Education</span><span class="rc-tag">Flourishing</span><span class="rc-tag">Self-Efficacy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-box">
+      <h3 data-en="Research Instrumentation & Certification" data-ko="연구 장비 & 자격증">Research Instrumentation & Certification</h3>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-icon">👁</div>
+          <div class="tool-name" data-en="Eye Tracking" data-ko="시선추적">Eye Tracking</div>
+          <div class="tool-cert" data-en="iMotions Certified" data-ko="iMotions 수료">iMotions Certified</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-icon">🧠</div>
+          <div class="tool-name" data-en="EEG / Brainwave" data-ko="뇌파 분석">EEG / Brainwave</div>
+          <div class="tool-cert" data-en="iMotions Certified" data-ko="iMotions 수료">iMotions Certified</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-icon">😊</div>
+          <div class="tool-name" data-en="Facial Expression" data-ko="얼굴표정 분석">Facial Expression</div>
+          <div class="tool-cert" data-en="iMotions Certified" data-ko="iMotions 수료">iMotions Certified</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-icon">📊</div>
+          <div class="tool-name" data-en="Multimodal Analytics" data-ko="멀티모달 분석">Multimodal Analytics</div>
+          <div class="tool-cert" data-en="iMotions Academy" data-ko="iMotions 아카데미">iMotions Academy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<div class="section-wrap" id="publications">
+  <div class="section-inner">
+    <div class="section-label" data-en="Publications" data-ko="논문">Publications</div>
+    <h2 data-en="Selected Works" data-ko="논문 목록">Selected Works</h2>
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterPubs('all',this)"   data-en="All"           data-ko="전체">All</button>
+      <button class="filter-btn"        onclick="filterPubs('international',this)" data-en="International" data-ko="국제저널">International</button>
+      <button class="filter-btn"        onclick="filterPubs('kci',this)"   data-en="KCI"           data-ko="KCI">KCI</button>
+      <button class="filter-btn"        onclick="filterPubs('book',this)"  data-en="Book Chapter"  data-ko="북챕터">Book Chapter</button>
+    </div>
+    <div class="pub-list" id="pubList"></div>
+  </div>
+</div>
+
+<!-- PRESENTATIONS -->
+<div class="section-wrap alt" id="presentations">
+  <div class="section-inner">
+    <div class="section-label" data-en="Conference Presentations" data-ko="학술발표">Conference Presentations</div>
+    <h2 data-en="Presentations" data-ko="발표 목록">Presentations</h2>
+    <div id="presList"></div>
+  </div>
+</div>
+
+<!-- AWARDS -->
+<div class="section-wrap" id="awards">
+  <div class="section-inner">
+    <div class="section-label" data-en="Recognition" data-ko="수상 내역">Recognition</div>
+    <h2 data-en="Awards & Honors" data-ko="수상 및 표창">Awards & Honors</h2>
+    <div class="awards-list" id="awardsList"></div>
+  </div>
+</div>
+
+<footer>
+  <p>Kukhyeon Kim · Chonnam National University · <a href="mailto:Edu.kukhyeon@gmail.com">Edu.kukhyeon@gmail.com</a></p>
+  <p style="margin-top:6px;font-size:0.75rem;opacity:0.6" data-en="Last updated April 2026" data-ko="최종 업데이트 2026년 4월">Last updated April 2026</p>
+</footer>
+
+<script>
+  let allPubs = [], allPres = [], currentPubFilter = 'all', currentLang = 'en';
+
+  // ── Language Toggle ──────────────────────────────────────
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = lang === 'ko' ? el.dataset.ko : el.dataset.en;
+    });
+    renderPubs(currentPubFilter);
+    renderPres();
+    renderAwards();
+  }
+
+  // ── Publications ─────────────────────────────────────────
+  fetch('./data/publications.json').then(r => r.json()).then(d => { allPubs = d; renderPubs('all'); });
+
+  function filterPubs(type, btn) {
+    currentPubFilter = type;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPubs(type);
+  }
+
+  function renderPubs(filter) {
+    const el = document.getElementById('pubList');
+    const data = (filter === 'all' ? allPubs : allPubs.filter(p => p.type === filter))
+                  .sort((a, b) => b.year - a.year);
+    if (!data.length) { el.innerHTML = '<p style="color:var(--muted);font-size:.88rem">No results.</p>'; return; }
+
+    el.innerHTML = data.map(p => {
+      const bc = p.type === 'international' ? 'b-intl' : p.type === 'kci' ? 'b-kci' : 'b-book';
+      const bl = p.type === 'international' ? 'International' : p.type === 'kci' ? 'KCI' : 'Book Chapter';
+      const pub = p.publisher ? ` ${p.publisher}.` : '';
+      const doi = p.doi ? `<a class="pub-link" href="https://doi.org/${p.doi}" target="_blank">→ DOI</a>` : '';
+      return `<div class="pub-item">
+        <div class="pub-year">${p.year}</div>
+        <div class="pub-body">
+          <div class="pub-title">${p.title}<span class="pub-badge ${bc}">${bl}</span></div>
+          <div class="pub-authors">${p.authors}</div>
+          <div class="pub-journal"><em>${p.journal}</em>${p.volume ? ', '+p.volume : ''}${p.pages ? ', '+p.pages : ''}.${pub}</div>
+          ${doi}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // ── Presentations ─────────────────────────────────────────
+  fetch('./data/presentations.json').then(r => r.json()).then(d => { allPres = d; renderPres(); });
+
+  function renderPres() {
+    const el = document.getElementById('presList');
+    const byYear = {};
+    allPres.forEach(p => { if (!byYear[p.year]) byYear[p.year] = []; byYear[p.year].push(p); });
+    const years = Object.keys(byYear).sort((a,b) => b - a);
+
+    el.innerHTML = years.map((yr, i) => {
+      const items = byYear[yr].map(p => `
+        <div class="pres-item">
+          <span class="pres-type">${p.type}</span>
+          <div class="pres-body">
+            <div class="pres-title">${p.title}</div>
+            <div class="pres-meta">${p.authors} · <span class="pres-conf">${p.conf}</span> · ${p.location}</div>
+          </div>
+        </div>`).join('');
+      const open = i === 0 ? 'open' : '';
+      const arrow = i === 0 ? '▲' : '▼';
+      const count = byYear[yr].length;
+      return `<div class="year-group">
+        <div class="year-header" onclick="toggleYear(this)">
+          <span>${yr}</span>
+          <span>${count} ${currentLang==='ko'?'건':'presentation'+( count>1?'s':'')} <span class="yr-arrow">${arrow}</span></span>
+        </div>
+        <div class="year-body ${open}">${items}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function toggleYear(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.yr-arrow');
+    body.classList.toggle('open');
+    arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+  }
+
+  // ── Awards ────────────────────────────────────────────────
+  fetch('./data/awards.json').then(r => r.json()).then(d => { renderAwards(d); window._awards = d; });
+  function renderAwards(data) {
+    data = data || window._awards || [];
+    const el = document.getElementById('awardsList');
+    el.innerHTML = [...data].sort((a,b) => b.year - a.year).map(a => `
+      <div class="award-item">
+        <div class="award-year">${a.year}</div>
+        <div class="award-body">
+          <div class="award-title">${a.title}</div>
+          <div class="award-org">${a.org}</div>
+        </div>
+        <span class="${a.type==='international'?'a-intl':'a-dom'}">${a.type==='international'?'International':'Domestic'}</span>
+      </div>`).join('');
+  }
+
+  // ── Init ──────────────────────────────────────────────────
+  const savedLang = localStorage.getItem('lang') || 'en';
+  if (savedLang === 'ko') setLang('ko');
+</script>
+</body>
+</html>
