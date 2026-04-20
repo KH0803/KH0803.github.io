@@ -51,6 +51,9 @@
     .contact-links { display: flex; gap: 8px; flex-wrap: wrap; }
     .contact-links a { font-size: 0.8rem; padding: 6px 14px; border: 1.5px solid var(--accent-lt); border-radius: 20px; color: var(--accent); text-decoration: none; font-weight: 500; transition: all 0.15s; }
     .contact-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+    .affil-logos { display: flex; align-items: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+    .affil-logos img { height: 36px; width: auto; object-fit: contain; opacity: 0.85; transition: opacity 0.15s; filter: grayscale(20%); }
+    .affil-logos img:hover { opacity: 1; filter: none; }
 
     /* RESEARCH */
     .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 28px; }
@@ -187,6 +190,11 @@
           <a href="https://scholar.google.com" target="_blank" data-en="Google Scholar" data-ko="구글 스칼라">Google Scholar</a>
           <a href="https://github.com/KH0803" target="_blank">GitHub</a>
           <!-- CV 임시 비활성화 - PDF 업데이트 후 복원 예정 -->
+        </div>
+        <div class="affil-logos">
+          <img src="assets/CNU logo1.png" alt="Chonnam National University" title="전남대학교" />
+          <img src="assets/IER logo1.png" alt="Institute of Educational Research" title="교육문제연구소" />
+          <img src="assets/Cilt logo1.png" alt="CiLT" title="실감학습융합연구센터" />
         </div>
       </div>
     </div>
