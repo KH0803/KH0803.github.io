@@ -61,10 +61,14 @@
     /* IMPACT TAGLINE */
     .impact-line { margin-top: 18px; margin-bottom: 18px; padding: 14px 18px; border-left: 3px solid var(--accent-lt); background: var(--bg-alt); border-radius: 0 8px 8px 0; font-size: 0.95rem; line-height: 1.6; color: var(--accent-dk); font-style: italic; font-weight: 500; }
 
-    /* CURRENT RESEARCH INTERESTS */
-    .current-interests { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 18px; margin-bottom: 4px; padding: 12px 16px; background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; }
-    .ci-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-right: 4px; }
-    .ci-tag { font-size: 0.82rem; padding: 4px 12px; border-radius: 14px; background: var(--bg-alt); color: var(--accent-dk); font-weight: 600; border: 1px solid var(--accent-lt); }
+    /* RESEARCH INTERESTS (two rows: core + heading toward) */
+    .interests-block { margin-top: 18px; margin-bottom: 4px; }
+    .interests-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 12px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 0 8px 8px 0; margin-bottom: 8px; }
+    .interests-row.core   { border-left: 3px solid var(--accent-lt); }
+    .interests-row.toward { border-left: 3px solid var(--accent); }
+    .ci-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-right: 4px; flex-shrink: 0; }
+    .ci-tag { font-size: 0.8rem; padding: 4px 11px; border-radius: 14px; background: var(--bg-alt); color: var(--accent-dk); font-weight: 600; border: 1px solid var(--border); }
+    .interests-row.toward .ci-tag { background: var(--tag); border-color: var(--accent-lt); }
 
     /* STAT CARDS */
     .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 36px; }
@@ -300,11 +304,22 @@
            data-ko="저는 교육공학 연구자로서 학습을 위한 몰입형 XR/VR/AR 시뮬레이션의 설계 및 개발을 전문으로 합니다. 시선추적, 뇌파(EEG), 얼굴표정 분석 등 멀티모달 생리측정을 통합하여 학습자가 시뮬레이션 환경에서 어떻게 사고하고, 느끼며, 몰입하는지를 탐구합니다. 또한 디지털휴먼 상호작용, 학습경험설계(LXD), AI 융합 교사 교육도 연구하고 있습니다.">
           I am an educational technologist specializing in the design and development of immersive XR/VR/AR simulations for learning. My research focuses on multimodal physiological measurement—integrating eye tracking, EEG, and facial expression analysis—to understand how learners think, feel, and engage within simulated environments. I also explore digital human interactions, learning experience design (LXD), and AI-integrated teacher education.
         </p>
-        <div class="current-interests">
-          <span class="ci-label" data-en="Currently Heading Toward" data-ko="현재 관심 연구 방향">Currently Heading Toward</span>
-          <span class="ci-tag" data-en="Learning Analytics" data-ko="학습분석학">Learning Analytics</span>
-          <span class="ci-tag" data-en="Educational Data Mining" data-ko="교육 데이터 마이닝">Educational Data Mining</span>
-          <span class="ci-tag" data-en="AI-integrated Education" data-ko="인공지능 활용 교육">AI-integrated Education</span>
+        <div class="interests-block">
+          <div class="interests-row core">
+            <span class="ci-label" data-en="Research Interests" data-ko="연구 관심사">Research Interests</span>
+            <span class="ci-tag" data-en="XR / VR / AR Simulation" data-ko="XR · VR · AR 시뮬레이션">XR / VR / AR Simulation</span>
+            <span class="ci-tag" data-en="Multimodal Data" data-ko="멀티모달 데이터">Multimodal Data</span>
+            <span class="ci-tag" data-en="Digital Human" data-ko="디지털휴먼">Digital Human</span>
+            <span class="ci-tag" data-en="Learning Experience Design" data-ko="학습경험설계">Learning Experience Design</span>
+            <span class="ci-tag" data-en="Teacher Education" data-ko="교사 교육">Teacher Education</span>
+            <span class="ci-tag" data-en="Career Education" data-ko="진로 교육">Career Education</span>
+          </div>
+          <div class="interests-row toward">
+            <span class="ci-label" data-en="Currently Heading Toward" data-ko="현재 발전 방향">Currently Heading Toward</span>
+            <span class="ci-tag" data-en="Learning Analytics" data-ko="학습분석학">Learning Analytics</span>
+            <span class="ci-tag" data-en="Educational Data Mining" data-ko="교육 데이터 마이닝">Educational Data Mining</span>
+            <span class="ci-tag" data-en="AI-integrated Education" data-ko="인공지능 활용 교육">AI-integrated Education</span>
+          </div>
         </div>
         <div class="contact-links">
           <span class="contact-static">✉ edu.kukhyeon@gmail.com</span>
