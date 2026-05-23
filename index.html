@@ -207,6 +207,21 @@
     .subsection-label { font-size: 0.78rem; font-weight: 700; color: var(--accent-dk); margin-top: 36px; margin-bottom: 14px; padding-bottom: 6px; border-bottom: 2px solid var(--accent-lt); display: inline-block; letter-spacing: 0.5px; }
     .subsection-label:first-of-type { margin-top: 0; }
 
+    /* EDUCATION CARD (Dissertation block) */
+    .diss-block { margin-top: 12px; padding: 12px 16px; background: var(--bg-alt); border-left: 3px solid var(--accent-lt); border-radius: 0 8px 8px 0; }
+    .diss-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    .diss-title { font-size: 0.88rem; font-weight: 700; color: var(--accent-dk); margin-bottom: 8px; line-height: 1.45; }
+    .diss-summary { font-size: 0.82rem; line-height: 1.65; color: var(--text); margin-bottom: 8px; }
+    .diss-keywords { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .diss-keywords span { font-size: 0.7rem; padding: 2px 9px; border-radius: 10px; background: var(--card); color: var(--accent); font-weight: 600; border: 1px solid var(--accent-lt); }
+
+    /* RESEARCH KEYWORD CLOUD (in Activity Trend) */
+    .keyword-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding: 18px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+    .keyword-cloud .kw { font-size: 0.82rem; padding: 5px 12px; border-radius: 16px; background: var(--bg-alt); color: var(--accent-dk); font-weight: 500; border: 1px solid var(--border); transition: all 0.15s; }
+    .keyword-cloud .kw.kw-lg { font-size: 0.95rem; font-weight: 700; background: var(--accent); color: white; border-color: var(--accent); }
+    .keyword-cloud .kw.kw-md { font-size: 0.88rem; font-weight: 600; background: var(--tag); color: var(--accent-dk); border-color: var(--accent-lt); }
+    .keyword-cloud-caption { font-size: 0.72rem; color: var(--muted); margin-top: 10px; font-style: italic; }
+
     /* FUNDED PROJECTS (compact list) */
     .proj-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; display: grid; grid-template-columns: 130px 1fr auto; gap: 16px; align-items: start; }
     .proj-period { font-size: 0.72rem; font-weight: 700; color: var(--accent-lt); padding-top: 2px; }
@@ -578,7 +593,7 @@
 <div class="section-wrap alt" id="teaching">
   <div class="section-inner">
     <div class="section-label" data-en="Teaching" data-ko="수업">Teaching</div>
-    <h2 data-en="Courses Taught" data-ko="강의 과목">Courses Taught</h2>
+    <h2 data-en="Teaching Experience" data-ko="강의 경력">Teaching Experience</h2>
     <div id="teachingList"></div>
   </div>
 </div>
@@ -587,7 +602,10 @@
 <div class="section-wrap" id="experience">
   <div class="section-inner">
     <div class="section-label" data-en="Experience" data-ko="경력">Experience</div>
-    <h2 data-en="Positions & Visiting Research" data-ko="주요 경력 및 해외 방문연구">Positions &amp; Visiting Research</h2>
+    <h2 data-en="Education, Positions &amp; Visiting Research" data-ko="학력, 주요 경력 및 해외 방문연구">Education, Positions &amp; Visiting Research</h2>
+
+    <div class="subsection-label" data-en="Education" data-ko="학력">Education</div>
+    <div id="educationList"></div>
 
     <div class="subsection-label" data-en="Positions" data-ko="주요 경력">Positions</div>
     <div id="careerList"></div>
@@ -660,6 +678,13 @@
         </div>
         <div class="chart-totals" id="chartTotals"></div>
       </div>
+
+      <h3 style="font-size:0.95rem;font-weight:600;color:var(--muted);margin-top:32px;margin-bottom:14px"
+          data-en="Research areas" data-ko="연구 분야 키워드">Research areas</h3>
+      <div class="keyword-cloud" id="keywordCloud"></div>
+      <div class="keyword-cloud-caption"
+           data-en="Derived from publication topics — larger tags indicate more frequent themes"
+           data-ko="논문 주제에서 도출됨 — 큰 태그일수록 자주 다룬 분야">Derived from publication topics — larger tags indicate more frequent themes</div>
     </div>
   </div>
 </div>
@@ -671,7 +696,7 @@
 
 <script>
   let allPubs = [], allPres = [], currentPubFilter = 'all', currentLang = 'en';
-  let allTeaching = [], allCareer = [], allVisiting = [], allCollabs = [], allProjects = [];
+  let allTeaching = [], allCareer = [], allVisiting = [], allCollabs = [], allProjects = [], allEducation = [];
 
   // ── Language Toggle ──────────────────────────────────────
   function setLang(lang) {
@@ -685,11 +710,70 @@
     renderPubs(currentPubFilter);
     renderPres();
     renderAwards();
+    renderEducation();
     renderTeaching();
     renderCareer();
     renderVisiting();
     renderCollabs();
     renderProjects();
+    renderKeywords();
+  }
+
+  // ── Research Keyword Cloud ───────────────────────────────
+  const KEYWORDS = [
+    { en: 'XR / VR / AR Simulation', ko: 'XR · VR · AR 시뮬레이션', size: 'lg' },
+    { en: 'Multimodal Measurement',  ko: '멀티모달 생리측정',        size: 'lg' },
+    { en: 'Learning Experience Design (LXD)', ko: '학습경험설계(LXD)', size: 'lg' },
+    { en: 'Eye Tracking',     ko: '시선추적',         size: 'md' },
+    { en: 'EEG',              ko: '뇌전도(EEG)',      size: 'md' },
+    { en: 'Facial Expression', ko: '얼굴표정 분석',   size: 'md' },
+    { en: 'Digital Human',    ko: '디지털휴먼',       size: 'md' },
+    { en: 'Cognitive Load',   ko: '인지부하',         size: 'md' },
+    { en: 'Emotion',          ko: '정서',             size: 'md' },
+    { en: 'Teacher Education', ko: '교사 교육',       size: 'md' },
+    { en: 'AI · Digital Competency', ko: 'AI · 디지털 역량', size: 'reg' },
+    { en: 'Avatar Realism',   ko: '아바타 사실성',    size: 'reg' },
+    { en: 'User Experience',  ko: '사용자 경험',      size: 'reg' },
+    { en: 'Career Education', ko: '진로 교육',        size: 'reg' },
+    { en: 'Mixed-methods Research', ko: '혼합연구방법', size: 'reg' },
+    { en: 'Flourishing Education', ko: '플로리싱 교육', size: 'reg' },
+    { en: 'Industrial Safety', ko: '산업 안전',       size: 'reg' }
+  ];
+  function renderKeywords() {
+    const el = document.getElementById('keywordCloud'); if (!el) return;
+    const ko = currentLang === 'ko';
+    el.innerHTML = KEYWORDS.map(k => {
+      const cls = k.size === 'lg' ? 'kw kw-lg' : k.size === 'md' ? 'kw kw-md' : 'kw';
+      return `<span class="${cls}">${ko ? k.ko : k.en}</span>`;
+    }).join('');
+  }
+  renderKeywords();
+
+  // ── Education ────────────────────────────────────────────
+  fetch('./data/education.json').then(r => r.json()).then(d => { allEducation = d; renderEducation(); });
+  function renderEducation() {
+    const el = document.getElementById('educationList'); if (!el) return;
+    const ko = currentLang === 'ko';
+    el.innerHTML = allEducation.map(e => {
+      const advisor = ko ? e.advisor_ko : e.advisor_en;
+      const dissTitle = ko ? e.dissertation_title_ko : e.dissertation_title_en;
+      const dissSum = ko ? e.dissertation_summary_ko : e.dissertation_summary_en;
+      const keywords = ko ? e.keywords_ko : e.keywords_en;
+      const dissBlock = dissTitle ? `
+        <div class="diss-block">
+          <div class="diss-label">${ko ? '학위논문' : 'Doctoral Dissertation'}</div>
+          <div class="diss-title">${dissTitle}</div>
+          ${dissSum ? `<div class="diss-summary">${dissSum}</div>` : ''}
+          ${keywords && keywords.length ? `<div class="diss-keywords">${keywords.map(k => `<span>${k}</span>`).join('')}</div>` : ''}
+        </div>` : '';
+      return `<div class="list-card">
+        <div class="list-period">${e.period}</div>
+        <div class="list-title">${ko ? e.degree_ko : e.degree_en}</div>
+        <div class="list-sub">${ko ? e.institution_ko : e.institution_en}</div>
+        ${advisor ? `<div class="list-meta">${advisor}</div>` : ''}
+        ${dissBlock}
+      </div>`;
+    }).join('');
   }
 
   // ── Teaching ─────────────────────────────────────────────

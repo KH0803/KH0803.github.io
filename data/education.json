@@ -1,0 +1,32 @@
+[
+  {
+    "degree_en": "Ph.D. in Educational Technology (Integrated M.S./Ph.D.)",
+    "degree_ko": "교육학 박사 (석·박사 통합과정, 교육공학 전공)",
+    "institution_en": "Chonnam National University, Gwangju, Korea",
+    "institution_ko": "전남대학교, 광주",
+    "period": "2018.03 – 2024.08",
+    "advisor_en": "Advisor: Dr. Jeeheon Ryu",
+    "advisor_ko": "지도교수: 류지헌",
+    "dissertation_title_en": "Design and Effectiveness Verification of XR Simulations Based on Learning Experience Design",
+    "dissertation_title_ko": "학습경험설계 기반 확장현실 시뮬레이션의 개발과 효과검증",
+    "dissertation_summary_en": "Designed and developed XR simulations under the Learning Experience Design (LXD) framework integrating cognitive, affective, behavioral, and technological domains. Through a focus group interview with seven instructional-design experts, derived XR-simulation design principles across three areas: (1) instructional content design — goal–media alignment, active interactivity, feedback; (2) materials design — realistic 3D objects, multisensory presentation, balanced information load; (3) technological design — intuitive interface and ease of device operation.",
+    "dissertation_summary_ko": "학습경험설계(LXD)의 인지·정서·행동·기술 4영역을 통합 적용해 확장현실 시뮬레이션을 설계·개발하고 효과를 검증함. 교수설계 전문가 7인 대상 초점집단면담을 통해 XR 시뮬레이션 설계원리를 세 영역으로 도출 — (1) 수업내용 설계: 학습목표·매체 일치성, 활동적 상호작용성, 피드백 제공 / (2) 수업자료 설계: 실감형 3D 가상 객체, 다감각적 학습자료, 균형 잡힌 자료량 / (3) 기술적 영역: 직관적 인터페이스, 기술조작의 용이성. 혼합연구방법 적용.",
+    "keywords_en": ["Learning Experience Design", "Extended Reality", "Mixed-methods Research", "Design Principles"],
+    "keywords_ko": ["학습경험설계", "확장현실", "혼합연구방법", "설계원리"]
+  },
+  {
+    "degree_en": "B.A. in Education (Dual Major: Secondary English Education)",
+    "degree_ko": "교육학 학사 (복수전공: 영어교육)",
+    "institution_en": "Chonnam National University, Gwangju, Korea",
+    "institution_ko": "전남대학교, 광주",
+    "period": "2008.03 – 2012.02",
+    "advisor_en": "",
+    "advisor_ko": "",
+    "dissertation_title_en": "",
+    "dissertation_title_ko": "",
+    "dissertation_summary_en": "",
+    "dissertation_summary_ko": "",
+    "keywords_en": [],
+    "keywords_ko": []
+  }
+]
