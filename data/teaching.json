@@ -1,0 +1,36 @@
+[
+  {
+    "institution_en": "Chonnam National University",
+    "institution_ko": "전남대학교",
+    "department_en": "College of Education",
+    "department_ko": "사범대학 교육학과",
+    "period": "2022.08 – Present",
+    "title_en": "Lecturer",
+    "title_ko": "강사",
+    "courses_en": [
+      "Educational Methods & Educational Technology",
+      "Educational Technology",
+      "Digital Education"
+    ],
+    "courses_ko": [
+      "교육방법 및 교육공학",
+      "교육공학",
+      "디지털교육"
+    ]
+  },
+  {
+    "institution_en": "Gwangju National University of Education",
+    "institution_ko": "광주교육대학교",
+    "department_en": "Department of Education",
+    "department_ko": "교육학과",
+    "period": "2023.03 – 2024.02",
+    "title_en": "Lecturer",
+    "title_ko": "강사",
+    "courses_en": [
+      "Educational Technology & AI Integration"
+    ],
+    "courses_ko": [
+      "교육공학 및 AI 융합"
+    ]
+  }
+]
