@@ -9,7 +9,15 @@
     "role_ko": "방문연구원 (J-1)",
     "host": "Dr. Pavlo Antonenko",
     "activity_en": "EEG and eye-tracking based research design for multimodal learning analytics",
-    "activity_ko": "EEG·시선추적 기반 멀티모달 학습분석 연구 설계"
+    "activity_ko": "EEG·시선추적 기반 멀티모달 학습분석 연구 설계",
+    "keywords_en": [
+      "EEG",
+      "Eye-Tracking"
+    ],
+    "keywords_ko": [
+      "EEG",
+      "시선추적"
+    ]
   },
   {
     "institution_en": "University of South Florida (USF)",
@@ -21,6 +29,12 @@
     "role_ko": "방문연구원 (J-1)",
     "host": "Dr. Sanghoon Park",
     "activity_en": "Design and development of AR-based teaching simulations for preservice teacher training",
-    "activity_ko": "예비교사 훈련을 위한 AR 기반 수업 시뮬레이션 설계 및 개발"
+    "activity_ko": "예비교사 훈련을 위한 AR 기반 수업 시뮬레이션 설계 및 개발",
+    "keywords_en": [
+      "AR Simulation"
+    ],
+    "keywords_ko": [
+      "AR 시뮬레이션"
+    ]
   }
 ]

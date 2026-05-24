@@ -6,7 +6,13 @@
     "org_ko": "전남대학교 교육문제연구소",
     "period": "2025.12 – Present",
     "duties_en": "Research planning and program operation",
-    "duties_ko": "기획·운영"
+    "duties_ko": "기획·운영",
+    "keywords_en": [
+      "Postdoctoral Research"
+    ],
+    "keywords_ko": [
+      "박사후연구"
+    ]
   },
   {
     "title_en": "Postdoctoral Researcher",
@@ -15,7 +21,13 @@
     "org_ko": "전남대학교 교육학과 BK21 미래교육을 위한 플로리싱 전문가 양성 사업단",
     "period": "2024.09 – 2025.11",
     "duties_en": "Program planning, operation, and evaluation",
-    "duties_ko": "기획·운영·평가"
+    "duties_ko": "기획·운영·평가",
+    "keywords_en": [
+      "BK21 Flourishing"
+    ],
+    "keywords_ko": [
+      "BK21 플로리싱"
+    ]
   },
   {
     "title_en": "Research Assistant",
@@ -24,6 +36,12 @@
     "org_ko": "전남대학교 교육문제연구소",
     "period": "2019.03 – 2024.08",
     "duties_en": "",
-    "duties_ko": ""
+    "duties_ko": "",
+    "keywords_en": [
+      "Research Assistant"
+    ],
+    "keywords_ko": [
+      "연구 보조"
+    ]
   }
 ]

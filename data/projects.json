@@ -8,7 +8,13 @@
     "role_en": "Research Member",
     "role_ko": "연구원",
     "description_en": "Development and operation of career-stage-responsive AI·digital competency training programs for teachers in the Gwangju–Jeonnam region",
-    "description_ko": "광주·전남 지역 교사의 교직생애주기별 AI·디지털 역량 강화 연수 프로그램 개발 및 운영"
+    "description_ko": "광주·전남 지역 교사의 교직생애주기별 AI·디지털 역량 강화 연수 프로그램 개발 및 운영",
+    "keywords_en": [
+      "Teacher AI·Digital Competency"
+    ],
+    "keywords_ko": [
+      "교원 AI·디지털 역량"
+    ]
   },
   {
     "title_en": "XR User Interaction Evaluation & Applied Technology Development (IRIS, Year 1–3)",
@@ -19,7 +25,15 @@
     "role_en": "Research Member",
     "role_ko": "연구원",
     "description_en": "",
-    "description_ko": ""
+    "description_ko": "",
+    "keywords_en": [
+      "XR",
+      "User Interaction"
+    ],
+    "keywords_ko": [
+      "XR",
+      "사용자 상호작용"
+    ]
   },
   {
     "title_en": "Edu-tech Based Immersive Content Development for Youth Career Education in the AI-Convergence Era (Year 1–3)",
@@ -30,7 +44,15 @@
     "role_en": "Research Member",
     "role_ko": "연구원",
     "description_en": "",
-    "description_ko": ""
+    "description_ko": "",
+    "keywords_en": [
+      "Career Education",
+      "Immersive Content"
+    ],
+    "keywords_ko": [
+      "진로 교육",
+      "실감형 콘텐츠"
+    ]
   },
   {
     "title_en": "Education Donation Hub for AI-Integration & Digital Competency Development (Year 1)",
@@ -41,7 +63,15 @@
     "role_en": "Research Member",
     "role_ko": "연구원",
     "description_en": "Hub center for Jeolla–Jeju region; planning and management of education-donation activities for K–12 schools",
-    "description_ko": "전라·제주권역 교육기부 거점지원센터로서 초·중등 학교 교육기부 활동 계획 및 관리"
+    "description_ko": "전라·제주권역 교육기부 거점지원센터로서 초·중등 학교 교육기부 활동 계획 및 관리",
+    "keywords_en": [
+      "Education Donation",
+      "AI·Digital"
+    ],
+    "keywords_ko": [
+      "교육 기부",
+      "AI·디지털"
+    ]
   },
   {
     "title_en": "Teacher Re-education Support Program (Honam–Jeju Region)",
@@ -52,7 +82,15 @@
     "role_en": "Research Member",
     "role_ko": "연구원",
     "description_en": "AI·digital competency training for preservice teachers; planning of micro-degree special training",
-    "description_ko": "예비교원 AI·디지털 역량 강화 프로그램 + 마이크로디그리형 특별 연수 계획 설계"
+    "description_ko": "예비교원 AI·디지털 역량 강화 프로그램 + 마이크로디그리형 특별 연수 계획 설계",
+    "keywords_en": [
+      "Teacher Re-education",
+      "Micro-degree"
+    ],
+    "keywords_ko": [
+      "교사 재교육",
+      "마이크로디그리"
+    ]
   },
   {
     "title_en": "Micro-degree Special Training Program for In-service Teachers' Digital Competency",
@@ -63,7 +101,13 @@
     "role_en": "Research Member",
     "role_ko": "연구원",
     "description_en": "",
-    "description_ko": ""
+    "description_ko": "",
+    "keywords_en": [
+      "Micro-degree"
+    ],
+    "keywords_ko": [
+      "마이크로디그리"
+    ]
   },
   {
     "title_en": "2024 AIDT Instructor Training & Quality Management Project",
@@ -74,7 +118,15 @@
     "role_en": "Research Member",
     "role_ko": "연구원",
     "description_en": "Teacher AI·digital competency indicator development; lead-teacher training program; consulting for regional training centers",
-    "description_ko": "교원 AI·디지털 역량 지표 개발 + 선도교사 연수 프로그램 개발·운영 + 거점형 연수기관 컨설팅"
+    "description_ko": "교원 AI·디지털 역량 지표 개발 + 선도교사 연수 프로그램 개발·운영 + 거점형 연수기관 컨설팅",
+    "keywords_en": [
+      "AIDT",
+      "Instructor Training"
+    ],
+    "keywords_ko": [
+      "AIDT",
+      "강사 양성"
+    ]
   },
   {
     "title_en": "BK21 FOUR — Flourishing Education for the Future",
@@ -85,7 +137,13 @@
     "role_en": "Postdoctoral Researcher",
     "role_ko": "신진연구원",
     "description_en": "",
-    "description_ko": ""
+    "description_ko": "",
+    "keywords_en": [
+      "BK21 Flourishing"
+    ],
+    "keywords_ko": [
+      "BK21 플로리싱"
+    ]
   },
   {
     "title_en": "BK21 FOUR — Flourishing Education for the Future",
@@ -96,6 +154,12 @@
     "role_en": "Participating Graduate Student",
     "role_ko": "참여대학원생",
     "description_en": "",
-    "description_ko": ""
+    "description_ko": "",
+    "keywords_en": [
+      "BK21 Flourishing"
+    ],
+    "keywords_ko": [
+      "BK21 플로리싱"
+    ]
   }
 ]

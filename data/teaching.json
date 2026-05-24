@@ -7,8 +7,18 @@
     "period": "2022.09 – Present",
     "title_en": "Lecturer",
     "title_ko": "강사",
-    "courses_en": ["Educational Methods and Technology"],
-    "courses_ko": ["교육방법 및 교육공학"]
+    "courses_en": [
+      "Educational Methods and Technology"
+    ],
+    "courses_ko": [
+      "교육방법 및 교육공학"
+    ],
+    "keywords_en": [
+      "Educational Technology"
+    ],
+    "keywords_ko": [
+      "교육공학"
+    ]
   },
   {
     "institution_en": "Chonnam National University",
@@ -25,6 +35,14 @@
     "courses_ko": [
       "교육공학",
       "디지털교육"
+    ],
+    "keywords_en": [
+      "Educational Technology",
+      "Digital Education"
+    ],
+    "keywords_ko": [
+      "교육공학",
+      "디지털교육"
     ]
   },
   {
@@ -35,8 +53,18 @@
     "period": "2023.06 – 2023.08",
     "title_en": "Lecturer",
     "title_ko": "강사",
-    "courses_en": ["Educational Technology and AI-Integrated Instruction"],
-    "courses_ko": ["교육공학 및 AI 융합 수업"]
+    "courses_en": [
+      "Educational Technology and AI-Integrated Instruction"
+    ],
+    "courses_ko": [
+      "교육공학 및 AI 융합 수업"
+    ],
+    "keywords_en": [
+      "AI-Integrated Instruction"
+    ],
+    "keywords_ko": [
+      "AI 융합 수업"
+    ]
   },
   {
     "institution_en": "Moon-Jung Girls' High School & Gwangju High School",
@@ -46,7 +74,17 @@
     "period": "2016.04 – 2019.02",
     "title_en": "English Teacher",
     "title_ko": "영어 교사",
-    "courses_en": ["High School English (Public-school appointment)"],
-    "courses_ko": ["고등학교 영어 (공립학교 정교사)"]
+    "courses_en": [
+      "High School English (Public-school appointment)"
+    ],
+    "courses_ko": [
+      "고등학교 영어 (공립학교 정교사)"
+    ],
+    "keywords_en": [
+      "Secondary English"
+    ],
+    "keywords_ko": [
+      "중등 영어"
+    ]
   }
 ]
